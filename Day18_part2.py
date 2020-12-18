@@ -16,9 +16,6 @@ def calc_sum(pieces):
     op = None
     while '+' in resolve_pieces:
         process_pieces = []
-        calced = False
-        last_val = None
-        op = None
         first_plus = resolve_pieces.index('+')
         for i in range(first_plus - 1):
             process_pieces.append(resolve_pieces[i])
@@ -55,6 +52,7 @@ def parse_parens(str_pieces):
     while i < len(str_pieces):
         if '(' in str_pieces[i]:
             # find closing paren
+            # Special case: two opening parens in one string
             paren_count = str_pieces[i].count('(') 
             end_index = -1
             for j in range(i + 1, len(str_pieces)):
